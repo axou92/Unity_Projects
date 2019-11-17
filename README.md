@@ -1,2 +1,2 @@
 # Unity_Projects
-In this repository, you will find all my personal projects that I have realised.
+In this repository, you will find all my personal projects that I have realised. Some projects are mobile applications, others are computer applications and soon projects in virtual reality will be available. Codes will not be available for all projects depending on if I wish to keep them confidential for the future. However, in case of questions, you can contact me using the contact section
