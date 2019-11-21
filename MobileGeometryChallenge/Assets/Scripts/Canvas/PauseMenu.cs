@@ -1,17 +1,22 @@
-﻿/*
-This script is automatically adding to a pausePannel. 
-It controls pause during the game and esc key is pressed.
-*/
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This script is automatically adding to a pausePannel. 
+/// It controls pause during the game and esc key is pressed.
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    public string num_level; // Indicate the scene name when you want to replay
-    public static bool gameIsPaused = false; // Indicate if the game is in pause
-    public GameObject pauseMenuUI; // Select the panel
+    /// Public variables.
+    [Header("Canvas")]
+    public GameObject pauseMenuUI;
     public GameObject OptionUI;
     public GameObject GameUI;
+
+    [Header("Level information")]
+    public string num_level;
+
+    public static bool gameIsPaused = false;
 
     void Update()
     {       
@@ -21,6 +26,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /// <summary> Function called to continue the game. </summary>
     public void Resume()
     {
         gameIsPaused = !gameIsPaused;
@@ -29,14 +35,15 @@ public class PauseMenu : MonoBehaviour
 
         if (gameIsPaused)
         {
-            Manager.actualTime = 0;
+            Manager.manager.actualTime = 0;
         }
         else
         {
-            Manager.actualTime = 1;
+            Manager.manager.actualTime = 1;
         }
     }
 
+    /// <summary> Function called to replay the level. </summary>
     public void Replay()
     {
         gameIsPaused = true;
@@ -44,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         Resume();
     }
 
+    /// <summary> Function called to change the game option. </summary>
     public void Option()
     {
         OptionUI.SetActive(true);
@@ -51,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         GameUI.SetActive(false);
     }
 
+    /// <summary> Function called to return to the pause option. </summary>
     public void BackOption()
     {
         GameUI.SetActive(false);
@@ -58,17 +67,17 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
     }
 
+    /// <summary> Function called to back to the menu of the game. </summary>
     public void Menu()
     {
         gameIsPaused = true;
-        Manager.actualTime = 0;
+        Manager.manager.actualTime = 0;
         SceneManager.LoadScene("Menu");
-        // Resume();
     }
 
+    /// <summary> Function called to leave the game. </summary>
     public void Quit()
     {
         Application.Quit();
     }
-
 }

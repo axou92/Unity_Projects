@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary> This script allows to follow the player during the game. </summary>
 public class CameraController : MonoBehaviour
 {
-
     public Transform playerTransform;
     private Vector3 cameraOffset;
 
@@ -18,6 +18,5 @@ public class CameraController : MonoBehaviour
     {
         Vector3 newPosition = playerTransform.position + cameraOffset;
         transform.position = Vector3.Slerp(transform.position, newPosition, smooth);
-
 	}
 }

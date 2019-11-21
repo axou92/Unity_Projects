@@ -1,37 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MooveObstacles : MonoBehaviour {
-
-    // public GameObject killObstacle;
+/// <summary> Allows to moove obstacle inside of the game. </summary>
+public class MooveObstacles : MonoBehaviour
+{
+    [Header("Obstacles properties")]
     public float startTime;
     public float maxX;
     public float maxY;
     public float maxZ;
     public float speed;
 
-    float x;
-    float y;
-    float z;
-    bool limit = false;
+    /// Private variables.
+    private float x;
+    private float y;
+    private float z;
+    private bool limit = false;
 
-    void Start ()
+    private void Start ()
     {
         x = transform.position.x + maxX;
         y = transform.position.y + maxY;
         z = transform.position.z + maxZ;
     }
 	
-	void Update ()
+	private void Update ()
+    {
+        UpdateObstaclePosition();
+    }
+
+    /// <summary> Update the new position of the obstacle. </summary>
+    private void UpdateObstaclePosition()
     {
         float newX = 0;
         float newY = 0;
         float newZ = 0;
 
-        Debug.Log(y - transform.position.y);
-        Debug.Log(limit);
-        if(Time.time > startTime)
+        if (Time.time > startTime)
         {
             if ((x - transform.position.x == 0) && (y - transform.position.y == 0) && (z - transform.position.z == 0))
             {
@@ -59,6 +63,5 @@ public class MooveObstacles : MonoBehaviour {
 
             transform.position = Vector3.MoveTowards(transform.position, endPosition, speed * Time.deltaTime);
         }
-
     }
 }

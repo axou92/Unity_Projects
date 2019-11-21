@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary> This script allows to display the remaning time to finish the level. </summary>
 public class TimeScript : MonoBehaviour
 {
+    /// Public variables.
+    [Header("Script")]
     public PlayerController player;
 
+    [Header("Time information")]
     public Text timerText;
     public float timeMax;
 
+    /// Private variables.
     private float startTime;
 
     void Start()
@@ -16,6 +21,12 @@ public class TimeScript : MonoBehaviour
     }
 
     void Update()
+    {
+        DisplayRemaningTime();
+    }
+
+    /// <summary> Display the time with different color according to the remaning time. </summary>
+    private void DisplayRemaningTime()
     {
         float t = Time.time - startTime;
         float remainingTime = timeMax - t;
@@ -43,9 +54,9 @@ public class TimeScript : MonoBehaviour
             remainingTime = 0;
         }
 
-        if (remainingTime <=0)
+        if (remainingTime <= 0)
         {
-            player.youLoose();   
+            player.YouLoose();
         }
     }
 }
