@@ -7,7 +7,7 @@ Challenge your friends by achieving the best time and keeping in mind it.
 
 ----------------------------------------------------------- IMPORTANT ------------------------------------------------------------
 
-Unfortunately, I have lost the source code and only the executable is available.
+The executable is available on this folder.
 So have fun to play at this game and ask question if you have it.
 
 
