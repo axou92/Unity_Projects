@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d65dfd959dbadf14eb225dbfc3503a4b
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Ball
     100002: Ball_cell
@@ -16,6 +16,16 @@ ModelImporter:
     100020: Ball_cell_013
     100022: Ball_cell_014
     100024: //RootNode
+    100026: Ball_cell.001
+    100028: Ball_cell.002
+    100030: Ball_cell.004
+    100032: Ball_cell.005
+    100034: Ball_cell.007
+    100036: Ball_cell.008
+    100038: Ball_cell.009
+    100040: Ball_cell.010
+    100042: Ball_cell.013
+    100044: Ball_cell.014
     400000: Ball
     400002: Ball_cell
     400004: Ball_cell_001
@@ -29,7 +39,18 @@ ModelImporter:
     400020: Ball_cell_013
     400022: Ball_cell_014
     400024: //RootNode
+    400026: Ball_cell.001
+    400028: Ball_cell.002
+    400030: Ball_cell.004
+    400032: Ball_cell.005
+    400034: Ball_cell.007
+    400036: Ball_cell.008
+    400038: Ball_cell.009
+    400040: Ball_cell.010
+    400042: Ball_cell.013
+    400044: Ball_cell.014
     2100000: unnamed
+    2100002: No Name
     2300000: Ball
     2300002: Ball_cell
     2300004: Ball_cell_001
@@ -42,6 +63,16 @@ ModelImporter:
     2300018: Ball_cell_010
     2300020: Ball_cell_013
     2300022: Ball_cell_014
+    2300024: Ball_cell.001
+    2300026: Ball_cell.002
+    2300028: Ball_cell.004
+    2300030: Ball_cell.005
+    2300032: Ball_cell.007
+    2300034: Ball_cell.008
+    2300036: Ball_cell.009
+    2300038: Ball_cell.010
+    2300040: Ball_cell.013
+    2300042: Ball_cell.014
     3300000: Ball
     3300002: Ball_cell
     3300004: Ball_cell_001
@@ -54,6 +85,16 @@ ModelImporter:
     3300018: Ball_cell_010
     3300020: Ball_cell_013
     3300022: Ball_cell_014
+    3300024: Ball_cell.001
+    3300026: Ball_cell.002
+    3300028: Ball_cell.004
+    3300030: Ball_cell.005
+    3300032: Ball_cell.007
+    3300034: Ball_cell.008
+    3300036: Ball_cell.009
+    3300038: Ball_cell.010
+    3300040: Ball_cell.013
+    3300042: Ball_cell.014
     4300000: Ball_cell_014
     4300002: Ball_cell_013
     4300004: Ball_cell_010
@@ -66,6 +107,16 @@ ModelImporter:
     4300018: Ball_cell_001
     4300020: Ball_cell
     4300022: Ball
+    4300024: Ball_cell.014
+    4300026: Ball_cell.013
+    4300028: Ball_cell.010
+    4300030: Ball_cell.009
+    4300032: Ball_cell.008
+    4300034: Ball_cell.007
+    4300036: Ball_cell.005
+    4300038: Ball_cell.004
+    4300040: Ball_cell.002
+    4300042: Ball_cell.001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -107,6 +158,7 @@ ModelImporter:
     globalScale: 0.5
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -124,11 +176,16 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -143,7 +200,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
