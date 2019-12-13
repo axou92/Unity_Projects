@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     public GameObject gameUI;
 
     [Header("Player's parameters")]
-    public float speed = 5;
+    public float speed = 8;
+    public float decelleration = 4;
     public float jump = 8;
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    public float distGround = 0.5f;
 
     [Header("Destroy the player")]
     public SphereCollider col;
@@ -30,42 +30,53 @@ public class PlayerController : MonoBehaviour
     private int colision = 1;
     private float timer = 0;
 
-    void Awake()
+    void Start()
     {
         MoveJoystick = FindObjectOfType<FixedJoystick>();
         rb = GetComponent<Rigidbody>();
-        JumpScript.isJump = false;
+        Collider playerCol = gameObject.GetComponent<SphereCollider>();
+        distGround = playerCol.bounds.extents.y;
     }
 
     void Update()
     {
-        /// Mobile movement.
-        if((MoveJoystick.Horizontal!=0) || (MoveJoystick.Vertical != 0))
+        float x = 0.0f;
+        float y = 0.0f;
+        float z = 0.0f;
+
+        if (IsGrounded())
         {
-            rb.velocity = new Vector3(speed * MoveJoystick.Horizontal * 2f, rb.velocity.y, speed * MoveJoystick.Vertical * 2f);
+            if (((MoveJoystick.Horizontal != 0) || (MoveJoystick.Vertical != 0)))
+            {
+                x = MoveJoystick.Horizontal * 2 * speed;
+                z = MoveJoystick.Vertical * 2 * speed;
+            }
+            else
+            {
+                x = -rb.velocity.x * decelleration;
+                z = -rb.velocity.z * decelleration;
+            }
+        }
+        if ((JumpScript.isJump && rb.velocity.y == 0))
+        {
+            y = jump;
+            rb.AddForce(0, y, 0, ForceMode.Impulse);
         }
 
-        /// Computer movement.
+        if (rb.velocity.x > speed)
+        {
+            rb.AddForce(0, y, z);
+        }
+        else if(rb.velocity.z > speed)
+        {
+            rb.AddForce(x, y, 0);
+        }
         else
         {
-            rb.velocity = new Vector3(speed * Input.GetAxis("Horizontal") * 2f, rb.velocity.y, speed * Input.GetAxis("Vertical") * 2f);
-        }
-            
-
-        if ((JumpScript.isJump && rb.velocity.y == 0)||(Input.GetButtonDown("Jump")))
-        {
-            rb.velocity = Vector3.up * jump;
-        }
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !JumpScript.isJump)
-        {
-            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rb.AddForce(x, y, z);
         }
 
-        if(isDestroyed)
+        if (isDestroyed)
         {
             YouLoose();
         }
@@ -101,6 +112,12 @@ public class PlayerController : MonoBehaviour
 
     /// ------------------------------ Private functions ------------------------------
 
+    /// <summary>Detect if the player is on the ground. </summary>
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distGround + 0.1f);
+    }
+
     /// <summary> Wait a specific time defined by the user. </summary>
     /// <param name="seconds"> Time to wait in seconds. </param>
     /// <returns> Return true if the waiting time is over. </returns>
@@ -119,38 +136,32 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision colInfo)
     {
         /// Case where the ball is in contact with a kill obstacle.
-        if (colInfo.gameObject.tag == "DANGER")
+        if (colInfo.gameObject.CompareTag("DANGER"))
         {
             colision = 2;
             YouLoose();
         }
 
         /// Case where the ball is in contact with a win area.
-        if (colInfo.gameObject.tag == "WIN")
+        if (colInfo.gameObject.CompareTag("WIN"))
         {
             LevelComplete();
         }
 
         /// Case where the ball is in contact with a lose area.
-        if (colInfo.gameObject.tag == "LOSE")
+        if (colInfo.gameObject.CompareTag("LOSE"))
         {
             YouLoose();
         }
 
-        /// Case where the ball is join to a mobile platform.
-        if(colInfo.gameObject.tag == "Platform")
-        {
-
-        }
-
         /// Case where the ball is in contact with a jump boost.
-        if (colInfo.gameObject.tag == "JumpBoost")
+        if (colInfo.gameObject.CompareTag("JumpBoost"))
         {
 
         }
 
         /// Case where the ball is in contact with a speed boost.
-        if (colInfo.gameObject.tag == "SpeedBoost")
+        if (colInfo.gameObject.CompareTag("SpeedBoost"))
         {
 
         }

@@ -14,7 +14,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject GameUI;
 
     [Header("Level information")]
-    public string num_level;
+    public string currentLevel;
+    public string nextLevel;
 
     public static bool gameIsPaused = false;
 
@@ -47,7 +48,7 @@ public class PauseMenu : MonoBehaviour
     public void Replay()
     {
         gameIsPaused = true;
-        SceneManager.LoadScene(num_level);
+        SceneManager.LoadScene(currentLevel);
         Resume();
     }
 
@@ -73,6 +74,13 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
         Manager.manager.actualTime = 0;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Next()
+    {
+        gameIsPaused = true;
+        SceneManager.LoadScene(nextLevel);
+        Resume();
     }
 
     /// <summary> Function called to leave the game. </summary>

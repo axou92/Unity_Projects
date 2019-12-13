@@ -21,6 +21,13 @@ public class MainMenu : MonoBehaviour
         Manager.manager.actualTime = 1;
     }
 
+    /// <summary> Function called to play the game. </summary>
+    public void PlayTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+        Manager.manager.actualTime = 1;
+    }
+
     /// <summary> Function called to open the level option. </summary>
     public void Level()
     {

@@ -8,6 +8,12 @@ TagManager:
   - WIN
   - LOSE
   - Platform
+  - SpeedBoost
+  - JumpBoost
+  - END
+  - MOVEMENT
+  - OBSTACLE
+  - JUMP
   layers:
   - Default
   - TransparentFX
